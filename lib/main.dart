@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
 void main() {
   runApp(MyApp());
@@ -28,18 +29,30 @@ class MyHomePage extends StatelessWidget {
       appBar: AppBar(
         title: Text(title),
       ),
-      body: Center(
+      body: SafeArea(
+      child: SingleChildScrollView( // this is new
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Text(
-              'You have pushed the button this many times:',
+            Image.asset('images/owl-2.jpeg',
+              width: 200,
+              height: 400,
+              fit: BoxFit.fill,
+              color: Colors.black,
+              colorBlendMode: BlendMode.hue,
+              semanticLabel: 'hello',
             ),
-            Text(
-              'You have pushed the button this many times:',
+            FadeInImage.assetNetwork(
+                placeholder: 'images/owl-2.jpeg',
+                image: 'https://flutter.github.io/assets-for-api-docs/assets/widgets/owl.jpg',
             ),
+            Image(
+              image: NetworkImage('https://flutter.github.io/assets-for-api-docs/assets/widgets/owl.jpg'),
+            ),
+            Image.network('https://flutter.github.io/assets-for-api-docs/assets/widgets/owl.jpg')
           ],
         ),
+      ),
       ),
     );
   }
